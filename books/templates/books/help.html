@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type = 'text/css' href="{% static 'books/general_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'books/images/favicon.ico' %}" />
+    <title>DigitaLib</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="top">
+                <div class="top-layer">
+                    <div class="container">
+                        <div class="head">   
+                            <div class="top__row">
+                                <div class="top__logo">
+                                    <a href="{% url 'main_window' %}" class="top__link"><img src = "{% static '../static/books/images/logo.png' %}"/ class="top__logo-style"><span class="top__link-text"><span class="top__letter_1">D</span>igita<span class="top__letter_2">L</span>ib</span></a> 
+                                </div>
+                                <div class="top__search">
+                                    <form action="{% url "show_searched" %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="text" class="top__input hidden" name="top_input" id="top_input" placeholder="Введите название">
+                                        <input type="text" class="top__input showed" name="top_input" id="top_input" placeholder="Введите название книги">
+                                        <button type="submit" class="top__button">Найти</button>
+                                    </form>
+                                </div>
+                                <div class="top__register">
+                                    <div class="top__drop-login">
+                                        <button class="top__regbutton"><img src="{% static '../static/books/images/im.png' %}"/ class="top__logo-login" alt=""></button>    
+                                        <div class="top__login">
+                                            <div class="top__cover"></div>
+                                            {% if not request.user.is_authenticated %}
+                                                <form action="{% url "show_login" %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type = 'submit' class="top__drop-link" value="Вход">
+                                                </form>
+                                                <form action="{% url "show_register" %}">
+                                                    <input type = 'submit' class="top__drop-link" value="Регистрация">
+                                                </form>
+                                            {% else %}
+                                                <div class="top__name">
+                                                    {{user}} 
+                                                </div>
+                                                <form action = {% url 'logout_view' %} method='get'>
+                                                    {% csrf_token %}
+                                                    <input type = 'submit' class="top__drop-link" value="Выйти">
+                                                </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>                                     
+                                </div>
+                            </div>
+
+                            <div class="top__menu">
+                                <ul class="top__menu">
+                                    <form action = {% url 'show_news' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Новинки</button>
+                                    </form>
+                                    <form action = {% url 'show_bestsellers' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Бестселлеры</button>
+                                    </form>
+                                    <form action = {% url 'show_all' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Книги</button>
+                                    </form>
+                                    <form action = {% url 'show_audio' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Аудиокниги</button>
+                                    </form>
+                                    <form action = {% url 'show_experts' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Эксперты</button>
+                                    </form>
+                                    <div class="top__drop-content">
+                                        <button class="top__button-link top__button-link_help">Помощь</button>
+                                        <div class="top__drop">
+                                            <form action="{% url "show_help" %}" method="post">
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="Помощь">
+                                            </form>
+                                            <form action = {% url "show_about" %} method='post'>
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="О нас">
+                                            </form>
+                                            <form action = {% url 'show_contacts' %} method='post'>
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="Контакты">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="return">
+                <div class="container">
+                    <div class="return__title">Помощь покупателям</div>
+                    <p class="information__text">Мы рады ответить на ваши вопросы и оказать помощь по телефону 8-800-333-6845 (звонок бесплатный) с 09:00 до 19:00 в рабочие дни. В нерабочие часы и выходные дни вы можете направить свои вопросы на почту manager@directmedia.ru. Мы ответим на ваше письмо при первой возможности.</p>
+                    <div class="return__title">ДЛЯ ЧЕГО НЕОБХОДИМА РЕГИСТРАЦИЯ?</div>
+                    <p class="information__text">Регистрация в интернет-магазине дает гарантию того, что все ваши платежи и покупки будут принадлежать только вам. Для идентификации платежей и покупок используется адрес электронной почты, поэтому будьте внимательны при заполнении.</p>
+                    
+                    <p class="return__highlight">Как зарегистрироваться</p>
+                    <p class="information__text">Чтобы зарегистрироваться, нажмите на ссылку «Регистрация» в правом верхнем углу экрана, введите адрес вашей электронной почты и придумайте надёжный пароль. Если вы делаете покупку впервые, зарегистрируйтесь в процессе оформления заказа. Для этого введите адрес электронной почты и пароль во время оформления первого заказа — это займет не более 30 секунд.</p>
+
+                    <div class="return__title">КАК ОПЛАТИТЬ КНИГУ?</div>
+                    <p class="return__text">Нажав на кнопку «Перейти к оплате» на выбранной книге, вы попадёте на страницу оплаты. Если вы ещё не авторизовались, введите свой логин и пароль или пройдите быструю регистрацию. Нажав на кнопку «Продолжить», вы перейдёте в сервис ЮKassa для выбора способа оплаты. После завершения оплаты вы попадёте на свою страницу в личном кабинете, где вас будет ожидать купленная книга.</p>
+
+                    <div class="return__title">КАК СКАЧАТЬ КНИГУ?</div>
+                    <p class="return__text">Сразу после оплаты вы будете перенаправлены на персональную страницу в личном кабинете, на которой увидите информацию о платеже и ссылку для получения покупки. Также на почту, указанную при регистрации, вы получите письмо с информацией о покупке. Скачать купленную книгу можно перейдя по ссылке из письма. Книги хранятся в личном кабинете 3 года с момента покупки.</p>
+
+                    <div class="return__title">КНИГА НЕ СКАЧИВАЕТСЯ. ЧТО ДЕЛАТЬ?</div>
+                    <p class="return__text">Если после оплаты покупки вы не можете скачать файл книги из личного кабинета (файл отсутствует или скачивание не работает), пожалуйста, обратитесь в службу поддержки: 8 800 333-68-45 (звонок бесплатный), info@directmedia.ru. Специалист службы поддержки свяжется с вами в ближайшее время. Вы получите оплаченную книгу или сможете осуществить возврат средств.</p>
+
+                    <div class="return__title">ПОИСК ПО САЙТУ</div>
+                    <p class="return__text">Найти книгу можно с любой страницы сайта. Для поиска введите полное или частичное название книги или фамилию автора в поисковую строку в верхней части страницы. Если вы не помните название книги и автора, воспользуйтесь расширенным поиском. Здесь вы сможете найти книгу по автору, названию, году издания, ISBN, издательству и отрывку из описания.</p>
+                
+
+                <div class="return__title">КАК ВОССТАНОВИТЬ ПАРОЛЬ?</div>
+                <p class="information__text">Для восстановления пароля перейдите на страницу восстановления пароля. На странице восстановления пароля введите адрес электронной почты, указанный при регистрации. На электронную почту вы получите письмо со ссылкой для восстановления пароля. Пройдите по ссылке и введите новый удобный пароль. Если вы забыли, какой e-mail указывали при регистрации, обратитесь в службу технической поддержки.</p>
+                
+                </div>
+            </div>
+
+        <footer class="footer">
+            <div class="layer layer_3">
+                <div class="container">
+                    hello
+                    <img src={% static '../static/books/images/line.png' %} alt="" class="footer__divider">
+                    <div class="footer__box">   
+                        <div class="footer__block">
+                            <ul class="footer__links">
+                                <li><a href="{% url "show_payment" %}" class="footer__payment">Оплата</a></li>|
+                                <li><a href="{% url "show_return" %}" class="footer__payment footer__payment_2">Возврат</a></li>
+                            </ul>
+
+                            <div class="footer__copyright">
+                                © 2022-2022, Издательство «DigitaLib»
+                            </div>
+                        </div>
+                        <div class="footer__block">
+                            <div class="footer__right-block">
+                                <div class="footer__networks">
+                                    <a href="https://vk.com/"><img src="{% static '../static/books/images/vk_icon.png' %}" alt="" class="footer__vk"></a>
+                                    <a href="https://www.instagram.com/"><img src="{% static '../static/books/images/insta_icon.png' %}" alt="" class="footer__vk"></a>
+                                    <a href="https://ru-ru.facebook.com/"><img src="{% static '../static/books/images/facebook_icon.png' %}" alt="" class="footer__vk"></a>
+                                </div>
+                                
+                                <div class="footer__phone">
+                                    <a href="" class="footer__phone-link">8 800 333-33-33</a>
+                                    <p class="footer__freecall">(звонок бесплатный)</p>
+
+                                    
+                                </div>
+                                <!--<a href="" class="footer__email-link">info@digitalib.ru</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

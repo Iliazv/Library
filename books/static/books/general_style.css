@@ -1,0 +1,1246 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    vertical-align: top;
+}
+
+button, input {
+    border: 0px;
+}
+
+html,
+body {
+    font-family: Arial;
+    height: 100%;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}/* Reset styles */
+
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.top {
+    background: url("/static/books/images/glasses.webp");
+    height: 140px;
+    z-index: 1;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 140px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.layer {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 140px;
+    z-index: 2;
+}
+
+.top-layer {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 140px;
+    z-index: 2;
+}
+
+.top__row {
+    padding: 10px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+}
+
+.top__logo-style {
+    width: 57px;
+    height: 57px;
+}
+
+.top__logo-login {
+    width: 33px;
+    height: 33px;
+}
+
+.top__link {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 0.6px;
+    transition: 0.2s ease;
+}
+
+.top__link:hover {
+    color: #8359de;
+}
+
+.top__link {
+    line-height: 55px;
+}
+
+.map {
+    width: 100%;
+}
+
+.top__letter_1 {
+    color : #8359de;
+    padding: 0 0 0 9px;
+}
+
+.top__letter_2 {
+    color : #8359de;
+    padding: 0 0 0 1px;
+}
+
+.top__input {
+    font-family: 'Ubuntu', sans-serif;
+    padding: 0 0 0 15px;
+    height: 35px;
+    width: 600px;
+    font-size: 17px;
+    border-radius: 5px 0 0 5px;
+    line-height: 35px;
+
+}
+
+.top__input::placeholder {
+    letter-spacing: 0.3px;
+}
+
+.hidden {
+    display: none;
+}
+
+.top__button {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0 0 0 -5px;
+    height: 35px;
+    width: 240px;
+    background-color: #8359de;
+    border-radius: 0 5px 5px 0;
+    transition: 0.3s ease;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 0.7px;
+}
+
+.top__button:hover {
+    background-color: #6544ad;
+}
+
+.top__cover {
+    padding: 0;
+    margin: 0 0 0 0;
+}
+
+.top__cover {
+    position: absolute;
+    top: -10px;
+    height: 10px;
+    right: 0;
+    min-width: 200px;
+    background-color: transparent;
+}
+
+.top__login {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 48px;
+    right: -78px;
+    background-color: rgba(0, 0, 0, 0.65);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 20px 0px 18px 27px;
+}
+
+
+.top__drop-login {
+    position: relative;
+}
+
+.top__drop-content:hover .top__drop {
+    display: flex;
+}
+
+.top__menu {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1500px;
+}
+
+.top__button-link {
+    position: relative;
+    width: 250px;
+    transition: 0.1s ease;
+    color: #fff;
+    background-color: transparent;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    padding: 18px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.top__drop-content {
+    position: relative;
+}
+
+.top__drop-login:hover .top__login {
+    display: flex;
+}
+
+.top__drop {
+    display: none;
+    font-family: 'Ubuntu', sans-serif;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 57px;
+    background-color: rgba(0, 0, 0, 0.5);
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 20px 0px 17px 35px;
+}
+
+.top__absolute {
+    position: absolute;
+    top: 30px;
+}
+
+.top__drop-link {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    padding: 4px;
+    margin: 0 0 9px 0;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    text-decoration-line: none;
+    transition: 0.1s ease;
+}
+
+.top__drop-link:hover {
+    color: #8359de;
+}
+
+.top__regbutton {
+    background-color: transparent;
+    padding: 3px;
+}
+
+.top__button-link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 22.5%;
+    height: 55%;
+    width: 1px;
+    color: grey;
+    background-color: grey;
+}
+
+.top__button-link:hover {
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #8d60ee;
+}
+
+.top__name {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0 0 9px 0;
+    padding: 4px;
+    font-size: 18px;
+    color: yellow;
+}
+
+.theme {
+    background: url("/static/books/images/banner.jpg");
+    height: 660px;
+    z-index: 1;
+}
+
+.layer_2 {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 660px;
+}
+
+.layer_3 {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 200px;
+}
+
+.info {
+    padding: 50px 0 0 0;
+}
+
+.theme__quote {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 32px;
+    color: #8d60ee;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.theme__image-book {
+    padding: 36px 0 0 0;
+    height: 430px;
+    filter: brightness(82%)
+}
+
+.theme__block {
+    display: flex;
+}
+
+.theme__information {
+    display: flex;
+    flex-direction: column;
+    padding: 36px 0 0 40px;
+}
+
+.theme__text {
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex-grow: 1;
+    font-size: 28px;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.95);
+    font-style: italic;
+    line-height: 36px;
+    font-weight: normal;   
+}
+
+.theme__book {
+    font-family: 'Ubuntu', sans-serif;
+    padding: 75px 0 0 0;
+    color: #fff;
+    font-size: 26px;
+}
+
+.theme__highlight {
+    font-weight: 600;
+}
+
+.list__title {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    padding: 56px 0 0 0;
+    font-size: 28px;
+    color: #8d60ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.list__icon {
+    margin: 0 0 0 4px;
+    width: 27px;
+    height: 27px;
+}
+
+.list__block {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -12px;
+    padding: 32px 0 0 10px;
+}
+
+.list__link {
+    margin: 12px;
+}
+
+.last__block {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -16px;
+    margin: 60px 0 0 0;
+    padding: 58px 0 58px 80px;
+    background-color: rgb(195, 195, 195);
+}
+
+.last__link {
+    margin: 16px;
+}
+
+.list__image {
+    position: relative;
+}
+
+.last__image {
+    position: relative;
+}
+
+.list__book-image {
+    display: block;
+    margin: 0 12px;
+    width: 182px;
+    height: 252px; 
+    box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.5);
+}
+
+.list__overlay {
+    position: relative;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 182px;
+    height: 252px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.1s ease;
+}
+
+.last__book-image {
+    display: block;
+    margin: 0 16px;
+    width: 160px;
+    height: 220px; 
+    box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.5);
+}
+
+.last__overlay {
+    position: relative;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    width: 160px;
+    height: 220px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.1s ease;
+}
+
+.list__overlay:hover, .last__overlay:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.list__subtitle {
+    color: #9a70f5;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 12px 12px 4px 12px;
+    line-height: 27px;
+}
+
+.last__subtitle {
+    color: #9a70f5;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 10px 4px 10px;
+    line-height: 24px;
+}
+
+.list__description {
+    color: #9a70f5;
+    font-size: 15px;
+    padding: 0 0 0 12px;
+}
+
+.last__description {
+    color: #9a70f5;
+    font-size: 14px;
+    padding: 0 0 0 10px;
+}
+
+.list__price {
+    flex-grow: 1;
+    font-size: 27px;
+    font-weight: bold;
+    padding: 20px 0 0 12px;
+    color: yellow;
+    opacity: 0.95;
+}
+
+.last__price {
+    flex-grow: 1;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 20px 0 0 12px;
+    color: yellow;
+    opacity: 0.95;
+}
+
+.list__eye-style {
+    position: absolute;
+    right: 118px;
+    bottom: 13px;
+    width: 27px;
+    height: 27px;
+}
+
+.list__eye {
+    padding: 0 20px 20px 0;
+    color: #9a70f5;
+    align-self: flex-end;
+    text-decoration-line: underline;
+}
+
+.last__eye-style {
+    position: absolute;
+    right: 110px;
+    bottom: 14px;
+    width: 24px;
+    height: 24px;
+}
+
+.list__small {
+    font-size: 14px;
+}
+
+.footer {
+    margin: 80px 0 0 0;
+    background-image: url("/static/books/images/foot.jpg");
+    height: 200px;
+    z-index: 1;
+    
+}
+
+.footer__links {
+    display: flex;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    z-index: 3;
+    padding: 32px 0 0 0;
+}
+
+.footer__links li {
+    list-style-type: none;
+}
+
+.footer__box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__right-block {
+    padding: 24px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.footer__payment {
+    color: white;
+    text-decoration-line: none;
+    margin: 0 30px 0 0;
+    transition: 0.1s ease;
+}
+
+.footer__payment:hover {
+    color: #9a70f5;
+}
+
+.footer__payment_2 {
+    margin: 0 0 0 30px;
+}
+
+.footer__payment::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 22.5%;
+    height: 55%;
+    width: 1px;
+    color: grey;
+    background-color: grey;
+}
+
+.footer__divider {
+    margin: 34px 0 0 0;
+    height: 0.1em;
+    width: 100%;
+}
+
+.footer__copyright {
+    padding: 35px 0 0 0;
+    font-family: 'Ubuntu', sans-serif;
+    color: grey;
+    font-size: 18px;
+}
+
+.footer__phone, .footer__phone-link {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    font-size: 24px;
+}
+
+.footer__phone-link {
+    text-decoration-line: none;
+    transition: 0.1s ease;
+}
+
+.footer__phone-link:hover {
+    color: #9a70f5;
+}
+
+.footer__freecall {
+    padding: 6px 0 0 0;
+    font-size: 18px;
+}
+
+.footer__email, .footer__email-link {
+    font-family: 'Ubuntu', sans-serif;
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.footer__email-link {
+    padding: 50px 0 0 0;
+    text-decoration-line: none;
+    transition: 0.1s ease;
+}
+
+.footer__email-link:hover {
+    color: #9a70f5;
+}
+
+.footer__vk {
+    width: 47px;
+    height: 47px;
+}
+
+.footer__vk:hover {
+    transform: scale(1.2);
+}
+
+.information__title, .return__title {
+    font-family: 'Ubuntu', sans-serif;
+    padding: 32px 0 40px 0;
+    color: #9a70f5;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.information {
+    padding: 0 10px;
+}
+
+.return__title {
+    padding: 32px 0 21px 0;
+}
+
+.information__text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 19px;
+    line-height: 22px;
+    padding: 10px 0;
+}
+
+.contact__text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 19px;
+    padding: 3px 0;
+}
+
+.information__list {
+    padding: 0 0 0 21px;
+}
+
+.information__text_1 {
+    margin: 12px 0 0 0;
+}
+
+.return__highlight {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    padding: 20px 0;
+}
+
+.return__text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 19px;
+    line-height: 22px;
+    padding: 20px 0;
+}
+
+.space {
+    padding: 80px 0 0 0;
+}
+
+.list__button-check {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    background-color:#8d60ee;
+    padding: 10px;
+    width: 300px;
+    height: 45px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.list__button-check:hover {
+    color: black;
+}
+
+.list__button-block:hover .list__button-eye{
+    opacity: 1;
+}
+
+.list__button-block {
+    margin: 40px 0 0 0;
+    display: inline-block;
+    position: relative;
+
+}
+
+.list__button-eye:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background-image: url("/static/books/images/2.png");
+}
+
+.list__button-eye {
+    position: absolute;
+    opacity: 0;
+    width: 30px;
+    height: 30px;
+    top: 8px;
+    left: 55px;
+    z-index: 2;
+    pointer-events: none;
+    transition: 0.1s ease;
+}
+
+
+
+.list__expert-image {
+    width: 175px;
+    height: 115px;
+
+}
+
+.expert__block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: -12px;
+    padding: 32px 0 0 10px;
+}
+
+.expert__box {
+    display: flex;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.4);
+    padding: 45px 0 45px 0;
+}
+
+.list__expert-info {
+    padding: 2px 0 0 30px;
+}
+
+.list__expert-name {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 17px;
+    color: #8d60ee;
+    padding: 2px 0 0 0;
+}
+
+.list__expert-description {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+    padding: 25px 0 0 0;
+    line-height: 21px;
+}
+
+.list__empty {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 21px;
+    padding: 30px 0 0 0;
+}
+
+@media (max-width: 1650px) {
+    .head {
+        padding: 0 20px 0 20px;
+    }
+}
+
+@media (max-width: 1550px) {
+    .head {
+        padding: 0 50px 0 50px;
+    }
+
+    .top__button-link {
+        width: 230px;
+    }
+
+    .info {
+        padding: 50px 20px 0 20px;
+    }
+
+    .list, .main, .return, .footer__box, .experts {
+        padding: 0 20px;
+    }
+
+    .list__title {
+        padding: 56px 20px 0 20px;
+    }
+
+    .top__drop {
+        min-width: 230px;
+    }
+
+    .footer__copyright {
+        padding: 10px 0 0 0;
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 1480px) {
+    .top__button-link {
+        width: 210px;
+    }
+}
+
+@media (max-width: 1360px) {
+    .top__button-link {
+        width: 190px;
+    }
+
+    .theme__text {
+        font-size: 24px;
+    }
+
+    .top__input {
+        width: 470px;
+    }
+
+    .top__button {
+        width: 190px;
+    }
+}
+
+@media (max-width: 1240px) {
+    .top__button-link {
+        width: 170px;
+    }
+
+    .theme__text {
+        font-size: 23px;
+        line-height: 32px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .top__button-link {
+        width: 150px;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .top__menu {
+        width: 500px;
+        flex-wrap: wrap;
+    }
+
+    .top__button-link {
+        font-size: 16px;
+        width: 160px;
+    }
+
+    .top__search {
+        margin: 8px 0 0 0;
+    }
+
+    .top__input { 
+        width: 270px;
+        height: 32px;
+    }
+
+    .top__button {
+        width: 110px;
+        height: 32px;
+    }
+
+    .top__link-text {
+        font-size: 20px;
+    }
+
+    .top__logo-style {
+        margin: 8px 0 0 0;
+        width: 48px;
+        height: 48px;
+    }
+
+    .top__logo-login {
+        margin: 8px 0 0 0;
+        width: 29px;
+        height: 29px;
+    }
+
+    .theme__quote {
+        font-size: 27px;
+    }
+
+    .theme__text {
+        font-size: 21px;
+        line-height: 24px;
+    }
+
+    .theme__image-book {
+        height: 400px;
+    }
+
+    .theme__book {
+        padding: 30px 0 0 0;
+        font-size: 23px;
+    }
+
+    .theme {
+        height: 590px;
+    }
+
+    .layer_2 {
+        height: 590px;
+    }
+
+    .footer__phone-link {
+        font-size: 21px;
+    }
+
+    .footer__freecall {
+        font-size: 16px;
+    }
+
+    .footer__payment {
+        margin: 0 30px 0 0;
+    }
+
+    .top {
+        height: 175px;
+    }
+
+    .top-layer {
+        height: 175px;
+    }
+
+    .main__image img {
+        width: 235px;
+        height: 320px;
+    }
+
+    .list__book-image {
+        width: 165px;
+        height: 237px; 
+    }
+
+    .list__overlay {
+        width: 165px;
+        height: 237px; 
+    }
+
+    .list__eye {
+        font-size: 14px;
+    }
+
+    .last__book-image {
+        width: 150px;
+        height: 210px; 
+    }
+
+    .last__overlay {
+        width: 150px;
+        height: 210px; 
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        max-width: none;
+    }
+
+    .list, .main, .return, .footer__box, .experts {
+        padding: 0 8px;
+    }
+
+    .list__title {
+        padding: 56px 8px 0 8px;
+    }
+}
+
+@media (max-width: 720px) {
+    .top__link-text {
+        display: none;
+    }
+
+    .top__input {
+        width: 200px;
+        font-size: 14px;
+    }
+
+    .top__button {
+        width: 90px;
+        font-size: 14px;
+    }
+
+    .theme__image-book {
+        display: none;
+    }
+
+    .theme {
+        height: 500px;
+    }
+
+    .layer_2 {
+        height: 500px;
+    }
+
+    .main__image-style {
+        display: none;
+    }
+
+    .footer__right-block {
+        width: 370px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer__vk {
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer__phone-link {
+        font-size: 18px;
+    }
+
+    .footer__freecall {
+        font-size: 14px;
+    } 
+
+    .footer__payment {
+        font-size: 17px;
+    }
+
+    .footer__right-block {
+        width: 280px;
+    }
+
+    .top__menu {
+        width: 400px;
+        flex-wrap: wrap;
+    }
+
+    .top {
+        height: 228px;
+    }
+
+    .top-layer {
+        height: 228px;
+    }
+
+    .info {
+        padding: 25px 10px 0 0;
+    }
+
+    .theme__information {
+        padding: 20px 10px 10px 35px;
+    }
+
+    .theme__quote {
+        font-size: 20px;
+        padding: 0 0 0 30px;
+    }
+
+    .theme__text {
+        font-size: 19px;
+    }
+
+    .top__input {
+        width: 170px;
+        font-size: 13px;
+        padding: 0 0 0 6px;
+    }
+
+    .top__button {
+        width: 80px;
+        font-size: 13px;
+    }
+
+    .top__login {
+        min-width: 170px;
+        padding: 12px 0px 12px 20px;
+    }
+
+    .top__drop-link {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 550px) {
+    .last__block {
+        margin: 45px 0 0 0;
+        padding: 42px 0 42px 50px;
+    }
+
+    .list__expert-image {
+        width: 168px;
+        height: 110px;
+    }
+
+    .list__expert-info {
+        padding: 0 0 0 26px;
+    }
+
+    .list__expert-description {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 15px;
+        padding: 18px 0 0 0;
+        line-height: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    .head {
+        padding: 0 15px 0 15px;
+    }
+
+    .top__input {
+        width: 142px;
+        font-size: 13px;
+        padding: 0 0 0 6px;
+    }
+
+    .top__button {
+        width: 65px;
+    }
+
+    .top__login {
+        min-width: 170px;
+        padding: 9px 0px 9px 12px;
+        font-size: 12px;
+    }
+
+    .top__drop-link {
+        font-size: 15px;
+    } 
+
+    .top__button-link {
+        width: 145px;
+    }
+
+    .footer__right-block {
+        width: 150px;
+    }
+
+    .theme__text {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .list__expert-image {
+        width: 140px;
+        height: 95px;
+    }
+
+    .list__expert-info {
+        padding: 0 0 0 11px;
+    }
+
+    .list__expert-description {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 15px;
+        padding: 12px 0 0 0;
+        line-height: 20px;
+    }
+
+    .showed {
+        display: none;
+    }
+
+    .hidden {
+        display: inline;
+    }
+}

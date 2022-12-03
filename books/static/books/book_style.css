@@ -1,0 +1,528 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    vertical-align: top;
+}
+
+button, input {
+    border: 0px;
+}
+
+html,
+body {
+    font-family: Arial;
+    height: 100%;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}/* Reset styles */
+
+.main__link {
+    font-family: 'Ubuntu', sans-serif;
+    padding: 25px 0 0 0;
+    font-size: 18px;
+    color: #8359de;
+}
+
+.main__link-style {
+    color: #8359de;
+    text-decoration-line: none;
+}
+
+.main__empty-link {
+    color: rgb(190, 190, 190);
+}
+
+
+.main__image-style {
+    width: 270px;
+    height: 370px;
+}
+
+.main__box {
+    display: flex;
+    padding: 30px 0 0 0;
+}
+
+.main__information {
+    padding: 0 0 0 90px;
+}
+
+.main__block {
+    display: flex;
+}
+
+.main__tag {
+    font-family: 'Ubuntu', sans-serif;
+    display: inline-block;
+    padding: 6px;
+    color: white;
+    font-size: 13px;
+    background-color: #8359de;
+    text-transform: uppercase;
+}
+
+.main__title {
+    padding: 15px 0 35px 0;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.main__author {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    padding: 0 0 0 0;
+}
+
+.main__format, .main__year, .main__pages, .main__age {
+    padding: 15px 0 0 0;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+}
+
+.main__column_1 {
+     width: 285px; 
+}
+
+.main__column_2 {
+    padding: 0 0 0 100px;
+}
+
+.main__place {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+}
+
+.main__price {
+    padding: 30px 0 0 0;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.main__price-style {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 42px;
+    font-style: italic;
+    color: #8359de;
+}
+
+.main__buy {
+    margin: 32px 0 0 0;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    background-color: #8359de;
+    color: #fff;
+    width: 330px;
+    height: 47px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+.main__buy:hover {
+    color: black;
+}
+
+.main__list {
+    position: relative;
+    padding: 70px 0 0 94px;
+    list-style-type: none;
+    display: flex;
+    z-index: 1;
+}
+
+.main__list li {
+    text-decoration-line: none;
+}
+
+.main__bottom-link {
+    font-family: 'Ubuntu', sans-serif;
+    color: black;
+    font-size: 20px;
+    text-decoration-line: none;
+    font-weight: bold;
+    padding: 0 15px;
+}
+
+.main__bottom-link:hover {
+    color: #8359de;
+    text-decoration-line: underline;
+}
+
+.main__description,
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ .main__description {
+  display: block;
+  position: absolute;
+}
+
+/* Стилизация псевдокнопки */
+.main__button {
+    display: inline-block;
+    font-family: 'Ubuntu', sans-serif;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    padding: 4px 8px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.main__content {
+    position: absolute;
+}
+
+#div1 {
+    display: block;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 21px;
+    line-height: 30px;
+    padding: 30px 90px 0 90px;
+    
+}
+
+#div2 {
+    display: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 30px 90px 0 90px;
+}
+
+#div3{
+    display: none;
+}
+
+.main__radio {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    color: black;
+    background-color: #fff;
+    padding: 5px 12px;
+}
+
+#main__id_1 {
+    border-bottom: 3px solid #8359de;
+}
+
+#main__id_1:hover {
+    border-bottom: 3px solid #8359de;
+}
+
+#main__id_2:focus #main__id_1 {
+    border-bottom: 0px;
+}
+
+.main__radio:hover {
+    color: #8359de;
+}
+
+.main__commentary {
+    padding: 35px 0 0 160px;
+}
+
+.main__madecomment {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    color: #8359de;
+    font-size: 20px;
+    padding: 0 0 26px 0;
+}
+
+.main__textarea {
+    font-family: 'Ubuntu', sans-serif;
+    width: 520px;
+    height: 160px;
+    border: 1px solid grey;
+    background-color: lightrey;
+    font-size: 17px;
+    padding: 7px;
+}
+
+.main__submit {
+    padding: 10px 0 0 420px;
+}
+
+.main__button {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    background-color: #8359de;
+    color: #fff;
+    font-size: 18px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 2px 0px #3c354a;
+    border: 1px solid #3c354a;
+    transition: 0.3s ease;
+}
+
+.main__button:hover {
+    box-shadow: 0 4px 0px #3c354a;
+    background-color: #a07bf0;
+}
+
+.main__auth-section {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 19px;
+    border: 3px solid #8359de;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.main__href {
+    color: black;
+    font-weight: bold;
+    transition: 0.1s ease;
+}
+
+.main__href:hover {
+    color: #8359de;
+}
+
+.main__log {
+    padding: 27px 0 0 93px;
+}
+
+.main__subtitle {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    padding: 0 0 20px 0;
+}
+
+.main__author-name {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    padding: 21px 15px 15px 21px;
+    color: black;
+}
+
+.main__fullcomment {
+    margin: 50px 0 0 0;
+    border: 1px solid rgba(211, 211, 211, 0.807);
+    border-radius: 6px;
+    width: 620px;
+}
+
+.main__author-icon {
+    width: 37px;
+    height: 37px;
+}
+
+.main__text {
+    overflow: hidden;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    padding: 21px 21px 21px 21px;
+}
+
+.main__name-author {
+    padding: 0 0 0 10px;
+    vertical-align: 8px;
+}
+
+.main__comment-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main__date {
+    padding: 32px 21px 0 0;
+}
+
+.main__date-style {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 17px;
+    color: rgb(183, 183, 183);
+}
+
+@media (max-width: 992px) { 
+    .main__link {
+        font-size: 17px;
+    }
+
+    .main__title {
+        font-size: 24px;
+        padding: 15px 0 25px 0;
+    }
+
+    .main__information {
+        padding: 0 0 0 45px;
+    }
+
+    .main__column_1 {
+        width: 210px;
+    }
+
+    .main__author, .main__format, .main__year, .main__pages, .main__place, .main__age {
+        font-size: 17px;
+    }
+
+    .main__price-style {
+        font-size: 35px;
+    }
+
+    .main__price {
+        padding: 24px 0 0 0;
+    }
+
+    .main__buy {
+        width: 300px;
+        height: 42px;
+    }
+
+    #div1 {
+        font-size: 20px;
+    }
+
+    .list__check {
+        font-size: 12px;
+    }
+
+    .main__information {
+        padding: 0 0 0 25px;
+    }
+
+    .main__fullcomment {
+        width: 95%;
+    }
+
+    .main__textarea {
+        width: 95%;
+    }
+}
+
+@media (max-width: 635px) {
+    
+}
+
+@media (max-width: 720px) {
+    .main__submit {
+        padding: 10px 0 30px 0;
+    }
+
+    .main__button {
+        position: absolute;
+        right: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .main__radio {
+        font-size: 19px;
+    }
+
+    .main__buy {
+        width: 270px;
+        height: 40px;
+    }
+
+    .main__list {
+        padding: 35px 0 0 45px;
+    }
+
+    #div1 {
+        padding: 27px 50px 0 64px;
+        font-size: 19px;
+    }
+
+    #div2 {
+        padding: 27px 50px 0 64px;
+    }
+
+    .main__log {
+        padding: 27px 0 0 64px;
+    }
+}
+
+@media (max-width: 450px) {
+    .main__title {
+        font-size: 21px;
+        width: 300px;
+    }
+
+    .main__information {
+        padding: 0 0 0 12px;
+    }
+
+    .main__column_1 {
+        width: 80px;
+    }
+
+    .main__buy {
+        width: 245px;
+    }
+    .main__list {
+        padding: 27px 0 0 18px;
+    }
+
+    .main__radio {
+        font-size: 16px;
+    }
+
+    #div1 {
+        padding: 27px 30px 0 30px;
+    }
+
+    #div2 {
+        padding: 27px 30px 0 30px;
+    }
+
+    .main__log {
+        padding: 27px 30px 0 30px;
+    }
+
+    .main__commentary {
+        padding: 35px 0 0 30px;
+    }
+}

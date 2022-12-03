@@ -1,0 +1,188 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type = 'text/css' href="{% static 'books/general_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'books/images/favicon.ico' %}" />
+    <title>DigitaLib</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="top">
+                <div class="top-layer">
+                    <div class="container">
+                        <div class="head">   
+                            <div class="top__row">
+                                <div class="top__logo">
+                                    <a href="{% url 'main_window' %}" class="top__link"><img src = "{% static '../static/books/images/logo.png' %}"/ class="top__logo-style"><span class="top__link-text"><span class="top__letter_1">D</span>igita<span class="top__letter_2">L</span>ib</span></a> 
+                                </div>
+                                <div class="top__search">
+                                    <form action="{% url "show_searched" %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="text" class="top__input hidden" name="top_input" id="top_input" placeholder="Введите название">
+                                        <input type="text" class="top__input showed" name="top_input" id="top_input" placeholder="Введите название книги">
+                                        <button type="submit" class="top__button">Найти</button>
+                                    </form>
+                                </div>
+                                <div class="top__register">
+                                    <div class="top__drop-login">
+                                        <button class="top__regbutton"><img src="{% static '../static/books/images/im.png' %}"/ class="top__logo-login" alt=""></button>    
+                                        <div class="top__login">
+                                            <div class="top__cover"></div>
+                                            {% if not request.user.is_authenticated %}
+                                                <form action="{% url "show_login" %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type = 'submit' class="top__drop-link" value="Вход">
+                                                </form>
+                                                <form action="{% url "show_register" %}">
+                                                    <input type = 'submit' class="top__drop-link" value="Регистрация">
+                                                </form>
+                                            {% else %}
+                                                <div class="top__name">
+                                                    {{user}} 
+                                                </div>
+                                                <form action = {% url 'logout_view' %} method='get'>
+                                                    {% csrf_token %}
+                                                    <input type = 'submit' class="top__drop-link" value="Выйти">
+                                                </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>                                     
+                                </div>
+                            </div>
+
+                            <div class="top__menu">
+                                <ul class="top__menu">
+                                    <form action = {% url 'show_news' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Новинки</button>
+                                    </form>
+                                    <form action = {% url 'show_bestsellers' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Бестселлеры</button>
+                                    </form>
+                                    <form action = {% url 'show_all' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Книги</button>
+                                    </form>
+                                    <form action = {% url 'show_audio' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Аудиокниги</button>
+                                    </form>
+                                    <form action = {% url 'show_experts' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Эксперты</button>
+                                    </form>
+                                    <div class="top__drop-content">
+                                        <button class="top__button-link top__button-link_help">Помощь</button>
+                                        <div class="top__drop">
+                                            <form action="{% url "show_help" %}" method="post">
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="Помощь">
+                                            </form>
+                                            <form action = {% url "show_about" %} method='post'>
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="О нас">
+                                            </form>
+                                            <form action = {% url 'show_contacts' %} method='post'>
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="Контакты">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="return">
+                <div class="container">
+                    <div class="return__title">Возврат</div>
+                    <p class="information__text">Уважаемый покупатель! Если у вас возникла необходимость осуществить возврат товара, пожалуйста
+                        ознакомьтесь с информацией ниже. Мы строго соблюдаем свои обязательства и действуем в соответствии
+                        с Законом Российской Федерации о защите прав потребителей.</p>
+                    
+                    <p class="return__highlight">Наиболее частые ситуации возврата денежных средств:</p>
+                    <ul class="information__list">
+                        <li class="information__text">Купленный товар не соответствует описанию, заявленным характеристикам и содержанию опубликованным на сайте</li>
+                        <li class="information__text">Файл покупки не работает</li>
+                    </ul>
+
+                    <p class="return__text">Полный список причин возврата денежных средств здесь.</p>
+
+                    <p class="return__text">Возврату подлежат только денежные средства, переведенные клиентом на счет магазина Директ Медиа. Акционные начисления, бонусные рубли и прочие вознаграждения возврату не подлежат.</p>
+
+                    <p class="return__text">Согласно Постановлению Правительства РФ от 19.01.1998 N 55 (ред. от 23.12.2016) п. 14 возврату не подлежат непериодические издания (книги, брошюры, альбомы, картографические и нотные издания, листовые изоиздания, календари, буклеты, издания, воспроизведенные на технических носителях информации).</p>
+
+                    <p class="return__text">Если вы оплатили и получили книгу, она соответствует описанию на сайте, вернуть деньги за такую покупку нельзя.</p>
+                
+
+                <div class="return__title">СПОСОБЫ ВОЗВРАТА</div>
+                <p class="information__text">Возврат денежных средств осуществляется на счет, с которого вы оплатили покупку. Например, если вы оплатили покупку банковской картой, деньги будут зачислены на эту же карту.
+                К сожалению, ЮKassa не дает возможности вернуть средства через некоторые методы, например:</p>
+                <ul class="information__list">
+                    <li class="information__text">Оплата наличными через кассы и терминалы</li>
+                    <li class="information__text">Оплата через ЕРИП (Беларусь)</li>
+                    <li class="information__text">Оплата через Сбербанк: по смс или Сбербанк Онлайн</li>
+                </ul>
+                <p class="return__text">Подробности на официальном сайте.</p>
+
+                <p class="return__text">Если вы оплатили покупку одним из этих способов, просто обратитесь в нашу поддержку по телефону 8 800 333 6845 (звонок бесплатный). Мы подберем удобный для возврата метод.</p>
+
+                <p class="return__text">Мы открыты для сотрудничества и готовы вместе с вами решать возникающие вопросы.</p>
+                </div>
+            </div>
+
+        <footer class="footer">
+            <div class="layer layer_3">
+                <div class="container">
+                    hello
+                    <img src={% static '../static/books/images/line.png' %} alt="" class="footer__divider">
+                    <div class="footer__box">   
+                        <div class="footer__block">
+                            <ul class="footer__links">
+                                <li><a href="{% url "show_payment" %}" class="footer__payment">Оплата</a></li>|
+                                <li><a href="{% url "show_return" %}" class="footer__payment footer__payment_2">Возврат</a></li>
+                            </ul>
+
+                            <div class="footer__copyright">
+                                © 2022-2022, Издательство «DigitaLib»
+                            </div>
+                        </div>
+                        <div class="footer__block">
+                            <div class="footer__right-block">
+                                <div class="footer__networks">
+                                    <a href="https://vk.com/"><img src="{% static '../static/books/images/vk_icon.png' %}" alt="" class="footer__vk"></a>
+                                    <a href="https://www.instagram.com/"><img src="{% static '../static/books/images/insta_icon.png' %}" alt="" class="footer__vk"></a>
+                                    <a href="https://ru-ru.facebook.com/"><img src="{% static '../static/books/images/facebook_icon.png' %}" alt="" class="footer__vk"></a>
+                                </div>
+                                
+                                <div class="footer__phone">
+                                    <a href="" class="footer__phone-link">8 800 333-33-33</a>
+                                    <p class="footer__freecall">(звонок бесплатный)</p>
+
+                                    
+                                </div>
+                                <!--<a href="" class="footer__email-link">info@digitalib.ru</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

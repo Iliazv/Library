@@ -1,0 +1,356 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type = 'text/css' href="{% static 'books/general_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'books/images/favicon.ico' %}" />
+    <title>DigitaLib</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="top">
+                <div class="top-layer">
+                    <div class="container">
+                        <div class="head">   
+                            <div class="top__row">
+                                <div class="top__logo">
+                                    <a href="{% url 'main_window' %}" class="top__link"><img src = "{% static '../static/books/images/logo.png' %}"/ class="top__logo-style"><span class="top__link-text"><span class="top__letter_1">D</span>igita<span class="top__letter_2">L</span>ib</span></a> 
+                                </div>
+                                <div class="top__search">
+                                    <form action="{% url "show_searched" %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="text" class="top__input hidden" name="top_input_hidden" id="top_input" placeholder="Введите название">
+                                        <input type="text" class="top__input showed" name="top_input" id="top_input" placeholder="Введите название книги">
+                                        
+                                        <button type="submit" class="top__button">Найти</button>
+                                    </form>
+                                </div>
+                                <div class="top__register">
+                                    <div class="top__drop-login">
+                                        <button class="top__regbutton"><img src="{% static '../static/books/images/im.png' %}"/ class="top__logo-login" alt=""></button>    
+                                        <div class="top__login">
+                                            <div class="top__cover"></div>
+                                            {% if not request.user.is_authenticated %}
+                                                <form action="{% url "show_login" %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type = 'submit' class="top__drop-link" value="Вход">
+                                                </form>
+                                                <form action="{% url "show_register" %}">
+                                                    <input type = 'submit' class="top__drop-link" value="Регистрация">
+                                                </form>
+                                            {% else %}
+                                                <div class="top__name">
+                                                    {{user}} 
+                                                </div>
+                                                <form action = {% url 'logout_view' %} method='get'>
+                                                    {% csrf_token %}
+                                                    <input type = 'submit' class="top__drop-link" value="Выйти">
+                                                </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>                                     
+                                </div>
+                            </div>
+
+                            <div class="top__menu">
+                                <ul class="top__menu">
+                                    <form action = {% url 'show_news' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Новинки</button>
+                                    </form>
+                                    <form action = {% url 'show_bestsellers' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Бестселлеры</button>
+                                    </form>
+                                    <form action = {% url 'show_all' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Книги</button>
+                                    </form>
+                                    <form action = {% url 'show_audio' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Аудиокниги</button>
+                                    </form>
+                                    <form action = {% url 'show_experts' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Эксперты</button>
+                                    </form>
+                                    <div class="top__drop-content">
+                                        <button class="top__button-link top__button-link_help">Помощь</button>
+                                        <div class="top__drop">
+                                            <form action="{% url "show_help" %}" method="post">
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="Помощь">
+                                            </form>
+                                            <form action = {% url "show_about" %} method='post'>
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="О нас">
+                                            </form>
+                                            <form action = {% url 'show_contacts' %} method='post'>
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="Контакты">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme">
+                <div class="layer layer_2">
+                    <div class="container">
+                        <div class="info">
+                            <div class="theme__quote">
+                                Цитата
+                            </div>
+                            <div class="theme__block">
+                                <div class="theme__image">
+                                    <img src="{% static '../static/books/images/1984.webp' %}"/ class = "theme__image-book" alt="">
+                                </div>
+                                <div class="theme__information">
+                                    <div class="theme__text">
+                                        В некотором смысле мировоззрение партии успешнее всего прививалось людям, не способным 
+                                        его понять. Они соглашаются с самыми вопиющими искажениями действительности, ибо не 
+                                        понимают всего безобразия подмены и, мало интересуясь общественными событиями, не 
+                                        замечают, что происходит вокруг. Непонятливость спасает их от безумия. Они глотают все
+                                        подряд, и то, что они глотают, не причиняет им вреда, не оставляет осадка, подобно тому
+                                        как кукурузное зерно проходит непереваренным через кишечник птицы.
+                                    </div>
+
+                                    <div class="theme__book">
+                                        Цитата из книги: <span class="theme__highlight">«1984»</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list">
+                <div class="container">
+                    <div class="list__title">
+                        Новинки <img src="{% static '../static/books/images/star.png' %}"/ class="list__icon" alt="">
+                    </div>
+                    <div class="list__block">
+                    {% for book in books %}
+                        {% if book.category == 'NEW' %}
+                            <div class="list__image">
+                                <a href={% url 'show_book' arg=book.id %} class="list__link"><img src="{{ book.image.url }}" alt="" class="list__book-image">
+                                <div class="list__overlay">
+                                    <div class="list__subtitle">
+                                        {% if book.name|length > 24 and book.name.23 != '.' %}
+                                            {{book.name|slice:":24"}}...
+                                        {% elif book.name|length > 24 and book.name.23 == '.' %}
+                                            {{book.name|slice:":24"}}..
+                                        {% else %}
+                                            {{ book.name }}
+                                        {% endif %}
+                                    </div>
+                                    <p class="list__description">{{book.author}}</p>
+                                    <div class="list__price">
+                                        {{book.price}} 
+                                    </div>
+                                    <div class="list__eye">
+                                        <img src="{% static '../static/books/images/2.png' %}"/ class="list__eye-style" alt=""><span class="list__check">Посмотреть</span>
+                                    </div>
+                                </div>
+                            </div></a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <form action = {% url 'show_news' %} method='post'>
+                        {% csrf_token %}
+                        <div class="list__button-block">
+                        <input type = 'submit' class="list__button-check" value="Смотреть все">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        <div class="list space">
+            <div class="container">
+                <div class="list__title">
+                    Бестселлеры <img src="{% static '../static/books/images/fire.png' %}"/ class="list__icon" alt="">
+                </div>
+                <div class="list__block">
+                {% for book in books %}
+                    {% if book.category == 'BESTSELLER' %}
+                        <div class="list__image">
+                            <a href={% url 'show_book' arg=book.id %} class="list__link"><img src="{{ book.image.url }}" alt="" class="list__book-image">
+                            <div class="list__overlay">
+                                <div class="list__subtitle">
+                                    {% if book.name|length > 24 and book.name.23 != '.' %}
+                                        {{book.name|slice:":24"}}...
+                                    {% elif book.name|length > 24 and book.name.23 == '.' %}
+                                        {{book.name|slice:":24"}}..
+                                    {% else %}
+                                        {{ book.name }}
+                                    {% endif %}
+                                </div>
+                                <p class="list__description">{{book.author}}</p>
+                                <div class="list__price">
+                                    {{book.price}} 
+                                </div>
+                                <div class="list__eye">
+                                    <img src="{% static '../static/books/images/2.png' %}"/ class="list__eye-style" alt=""><span class="list__check">Посмотреть</span>
+                                </div>
+                            </div>
+                        </div></a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                <form action = {% url 'show_bestsellers' %} method='post'>
+                    {% csrf_token %}
+                    <div class="list__button-block">
+                        <input type = 'submit' class="list__button-check" value="Посмотреть">
+                        <img src="{% static '../static/books/images/1.png' %}"/ class="list__button-eye" alt="">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="list space">
+            <div class="container">
+                <div class="list__title">
+                    История <img src="{% static '../static/books/images/history.png' %}"/ class="list__icon" alt="">
+                </div>
+                <div class="list__block">
+                {% for book in books %}
+                    {% if book.category == 'HISTORY' %}
+                        <div class="list__image">
+                            <a href={% url 'show_book' arg=book.id %} class="list__link"><img src="{{ book.image.url }}" alt="" class="list__book-image">
+                            <div class="list__overlay">
+                                <div class="list__subtitle">
+                                    {% if book.name|length > 24 and book.name.23 != '.' %}
+                                        {{book.name|slice:":24"}}...
+                                    {% elif book.name|length > 24 and book.name.23 == '.' %}
+                                        {{book.name|slice:":24"}}..
+                                    {% else %}
+                                        {{ book.name }}
+                                    {% endif %}
+                                </div>
+                                <p class="list__description">{{book.author}}</p>
+                                <div class="list__price">
+                                    {{book.price}} 
+                                </div>
+                                <div class="list__eye">
+                                    <img src="{% static '../static/books/images/2.png' %}"/ class="list__eye-style" alt=""><span class="list__check">Посмотреть</span>
+                                </div>
+                            </div>
+                        </div></a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                <form action = {% url 'show_history' %} method='post'>
+                    {% csrf_token %}
+                    <div class="list__button-block">
+                        <input type = 'submit' class="list__button-check" value="Смотреть все">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="last space">
+            <div class="container">
+                <div class="list__title">
+                    Научная литература
+                </div>
+                <div class="last__block">
+                {% for book in books %}
+                    {% if book.category == 'SCIENCE' %}
+                        <div class="last__image">
+                            <a href={% url 'show_book' arg=book.id %} class="last__link"><img src="{{ book.image.url }}" alt="" class="last__book-image">
+                            <div class="last__overlay">
+                                <div class="last__subtitle">
+                                    {% if book.name|length > 24 and book.name.23 != '.' %}
+                                        {{book.name|slice:":24"}}...
+                                    {% elif book.name|length > 24 and book.name.23 == '.' %}
+                                        {{book.name|slice:":24"}}..
+                                    {% else %}
+                                        {{ book.name }}
+                                    {% endif %}
+                                </div>
+                                <p class="last__description">{{book.author}}</p>
+                                <div class="last__price">
+                                    {{book.price}} 
+                                </div>
+                                <div class="list__eye">
+                                    <img src="{% static '../static/books/images/2.png' %}"/ class="last__eye-style" alt=""><span class="list__check list__small">Посмотреть</span>
+                                </div>
+                            </div>
+                        </div></a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                <!-- <form action = {% url 'show_contacts' %} method='post'> 
+                    {% csrf_token %}
+                    <div class="list__button-block">
+                        <input type = 'submit' class="list__button-check" value="Смотреть все">
+                    </div>
+                </form>-->
+            </div>
+
+        </div>
+    </div>
+
+        <footer class="footer">
+            <div class="layer layer_3">
+                <div class="container">
+                    hello
+                    <img src={% static '../static/books/images/line.png' %} alt="" class="footer__divider">
+                    <div class="footer__box">   
+                        <div class="footer__block">
+                            <ul class="footer__links">
+                                <li><a href="{% url "show_payment" %}" class="footer__payment">Оплата</a></li>|
+                                <li><a href="{% url "show_return" %}" class="footer__payment footer__payment_2">Возврат</a></li>
+                            </ul>
+
+                            <div class="footer__copyright">
+                                © 2022-2022, Издательство «DigitaLib»
+                            </div>
+                        </div>
+                        <div class="footer__block">
+                            <div class="footer__right-block">
+                                <div class="footer__networks">
+                                    <a href="https://vk.com/"><img src="{% static '../static/books/images/vk_icon.png' %}" alt="" class="footer__vk"></a>
+                                    <a href="https://www.instagram.com/"><img src="{% static '../static/books/images/insta_icon.png' %}" alt="" class="footer__vk"></a>
+                                    <a href="https://ru-ru.facebook.com/"><img src="{% static '../static/books/images/facebook_icon.png' %}" alt="" class="footer__vk"></a>
+                                </div>
+                                
+                                <div class="footer__phone">
+                                    <a href="" class="footer__phone-link">8 800 333-33-33</a>
+                                    <p class="footer__freecall">(звонок бесплатный)</p>
+
+                                    
+                                </div>
+                                <!--<a href="" class="footer__email-link">info@digitalib.ru</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
+

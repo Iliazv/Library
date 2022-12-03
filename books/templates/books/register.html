@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type = 'text/css' href="{% static 'books/authentification.css' %}">
+    <link rel="stylesheet" type = 'text/css' href="{% static 'books/general_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'books/images/favicon.ico' %}" />
+    <title>Регистрация | DigitaLib</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="container">
+                <div class="registration">
+                    <div class="registration__block">
+                        <div class="registration__image">
+                            <a href = {% url "main_window" %}><img src="{% static '../static/books/images/logo.png' %}"/ class = 'scale2'>
+                            <figcaption>DigitaLib</figcaption></a>
+                        </div>
+                        <div class="text-field__icon registration__name">
+                            <form action="{% url 'show_register' %}" method="post">
+                                {% csrf_token %} 
+                                    {% for field in form %}
+                                    {% if field.id_for_label == 'id_password1' or field.id_for_label == 'id_password2' %}
+                                        <div class="text-field__icon registration__password">
+                                    {% else %} 
+                                        <div class="text-field__icon registration__name-login">
+                                    {% endif %}
+                                        <input
+                                            type="{% if 'password' in field.label_tag %}password{% else %}text{% endif %}"
+                                            name="{{ field.html_name }}"
+                                            class="form-control"
+                                            maxlength="{% if 'username' in field.label_tag %}150{% endif %}"
+                                            id="{{ field.id_for_label }}"
+                                            {% if field.id_for_label == 'id_username' %}
+                                                placeholder='Имя'
+                                            {% elif field.id_for_label == 'id_password1' %}
+                                                placeholder='Пароль'
+                                            {% else %}
+                                                placeholder='Повторите пароль'
+                                            {% endif %}
+                                            required
+                                        />
+                                    </div>
+                        {% if field.errors %} {% for error in field.errors %}
+                        {{ error|escape }}
+                        {% endfor %} {% endif %} {% endfor %}
+                        </div>
+
+                         <div class="registration__link-position">
+                            <a href="#" class = 'registration__link-style'>Забыли пароль?</a>
+                        </div>
+                        <div class = 'registration__button'>
+                            <button type="submit" class="registration__submit-button">Зарегистрироваться</button>
+                        </div>
+                        <div class="registration__register-link">
+                            <a href={% url 'show_login' %} class="registration__register-href">Зарегистрируйтесь</a>, если у вас еще нет аккаунта 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

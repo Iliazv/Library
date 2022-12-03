@@ -1,0 +1,252 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src={% static 'books/radio.js' %}></script>
+    <link rel="stylesheet" type = 'text/css' href="{% static 'books/general_style.css' %}">
+    <link rel="stylesheet" type = 'text/css' href="{% static 'books/book_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'books/images/favicon.ico' %}" />
+    <title>DigitaLib</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="top">
+                <div class="top-layer">
+                    <div class="container">
+                        <div class="head">   
+                            <div class="top__row">
+                                <div class="top__logo">
+                                    <a href="{% url 'main_window' %}" class="top__link"><img src = "{% static '../static/books/images/logo.png' %}"/ class="top__logo-style"><span class="top__link-text"><span class="top__letter_1">D</span>igita<span class="top__letter_2">L</span>ib</span></a> 
+                                </div>
+                                <div class="top__search">
+                                    <form action="{% url "show_searched" %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="text" class="top__input hidden" name="top_input_hidden" id="top_input" placeholder="Введите название">
+                                        <input type="text" class="top__input showed" name="top_input" id="top_input" placeholder="Введите название книги">
+                                        
+                                        <button type="submit" class="top__button">Найти</button>
+                                    </form>
+                                </div>
+                                <div class="top__register">
+                                    <div class="top__drop-login">
+                                        <button class="top__regbutton"><img src="{% static '../static/books/images/im.png' %}"/ class="top__logo-login" alt=""></button>    
+                                        <div class="top__login">
+                                            <div class="top__cover"></div>
+                                            {% if not request.user.is_authenticated %}
+                                                <form action="{% url "show_login" %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type = 'submit' class="top__drop-link" value="Вход">
+                                                </form>
+                                                <form action="{% url "show_register" %}">
+                                                    <input type = 'submit' class="top__drop-link" value="Регистрация">
+                                                </form>
+                                            {% else %}
+                                                <div class="top__name">
+                                                    {{user}} 
+                                                </div>
+                                                <form action = {% url 'logout_view' %} method='get'>
+                                                    {% csrf_token %}
+                                                    <input type = 'submit' class="top__drop-link" value="Выйти">
+                                                </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>                                     
+                                </div>
+                            </div>
+
+                            <div class="top__menu">
+                                <ul class="top__menu">
+                                    <form action = {% url 'show_news' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Новинки</button>
+                                    </form>
+                                    <form action = {% url 'show_bestsellers' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Бестселлеры</button>
+                                    </form>
+                                    <form action = {% url 'show_all' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Книги</button>
+                                    </form>
+                                    <form action = {% url 'show_audio' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Аудиокниги</button>
+                                    </form>
+                                    <form action = {% url 'show_experts' %} method='get'>
+                                        {% csrf_token %}
+                                        <button type = 'submit' class="top__button-link" value="Новинки">Эксперты</button>
+                                    </form>
+                                    <div class="top__drop-content">
+                                        <button class="top__button-link top__button-link_help">Помощь</button>
+                                        <div class="top__drop">
+                                            <form action="{% url "show_help" %}" method="post">
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="Помощь">
+                                            </form>
+                                            <form action = {% url "show_about" %} method='post'>
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="О нас">
+                                            </form>
+                                            <form action = {% url 'show_contacts' %} method='post'>
+                                                {% csrf_token %}
+                                                <input type = 'submit' class="top__drop-link" value="Контакты">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="main">
+                <div class="container">
+                    <div class="main__link">
+                        <a href="{% url "main_window" %}" class="main__link-style">Главная</a> | <span class="main__empty-link">Информация о книге</span>
+                    </div>
+                    <div class="main__box">
+                        <div class="main__image">
+                            <img src="{{ book.image.url }}" alt="" class="main__image-style">
+                        </div>
+                        <div class="main__information">
+                            <div class="main__tag">Книга</div>
+                            <div class="main__title">{{book.name}}</div>
+                            <div class="main__block">
+                                <div class="main__column_1">
+                                    <div class="main__author">Автор: {{book.author}}</div>
+                                    <div class="main__format">Форматы: {{book.format}}</div>                           
+                                    <div class="main__year">Год: {{book.year}}</div>
+                                    <div class="main__pages">Страниц: {{book.pages}}</div>
+                                </div>
+                                <div class="main__column_2">
+                                    <div class="main__place">Место издания:  {{book.place}}</div>
+                                    <div class="main__age">Возрастное ограничение: {{book.age}}</div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="main__price">
+                                цена: <span class="main__price-style">{{book.price}}</span>
+                            </div>
+
+                            <input type = 'submit' class="main__buy" value="Купить">
+                        </div>
+                    </div>
+                    <div class="main__links">
+                        <ul class="main__list">
+                            <li>
+                                <input type="button" value="Описание" onmousedown="viewDiv1()" class="main__radio main__radio_1" id="main__id_1">             
+                            </li>
+                            
+                            <li>
+                                <input type="button" value="Содержание" onmousedown="viewDiv2()" class="main__radio main__radio_2" id="main__id_2">
+                            </li>
+                            <li>
+                                <input type="button" value="Отзывы" onmousedown="viewDiv3()" class="main__radio main__radio_3" id="main__id_3">
+                             </li>
+                        </ul>
+
+                    </div>
+                    <div class="main__links">
+                        <div id="div1">{{book.description}}</div>
+                        <div id="div2">{{book.content|linebreaks}}</div>  
+                        <div id="div3">
+                            {% if not request.user.is_authenticated %}
+                            <div class="main__log">
+                                <div class="main__subtitle">
+                                    Все отзывы
+                                </div>
+                                <div class="main__auth-section"> 
+                                    Чтобы оставить отзыв, <a href="{% url "show_register" %}" class="main__href">зарегистрируйтесь</a> или <a href="{% url "show_login" %}" class="main__href">войдите</a>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="main__commentary">
+                                <form action="{% url 'add_comment' arg=book.id %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="main__madecomment">Оставьте комментарий</div>
+                                    <textarea name="main_textarea" id="main_textarea" class="main__textarea" placeholder="Текст комментария"></textarea>
+                                    <div class="main__submit">
+                                        <input type = 'submit' class="main__button" value="Отправить">
+                                    </div>
+                                </form>
+                                {% for comment in comments %}
+                                    <div class="main__fullcomment">
+                                        <div class="main__comment-block">
+                                            <div class="main__author-name">
+                                                <img src="{% static '../static/books/images/icon.png' %}" alt="" class="main__author-icon">
+                                                <span class="main__name-author"></span> {{ comment.author }}
+                                            </div>
+                                            <div class="main__date">
+                                                <div class="main__date-style">{{comment.date}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="main__text">
+                                            {{ comment.text|linebreaks }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>  
+                        <div class="main__content">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="layer layer_3">
+                <div class="container">
+                    hello
+                    <img src={% static '../static/books/images/line.png' %} alt="" class="footer__divider">
+                    <div class="footer__box">   
+                        <div class="footer__block">
+                            <ul class="footer__links">
+                                <li><a href="{% url "show_payment" %}" class="footer__payment">Оплата</a></li>|
+                                <li><a href="{% url "show_return" %}" class="footer__payment footer__payment_2">Возврат</a></li>
+                            </ul>
+
+                            <div class="footer__copyright">
+                                © 2022-2022, Издательство «DigitaLib»
+                            </div>
+                        </div>
+                        <div class="footer__block">
+                            <div class="footer__right-block">
+                                <div class="footer__networks">
+                                    <a href="https://vk.com/"><img src="{% static '../static/books/images/vk_icon.png' %}" alt="" class="footer__vk"></a>
+                                    <a href="https://www.instagram.com/"><img src="{% static '../static/books/images/insta_icon.png' %}" alt="" class="footer__vk"></a>
+                                    <a href="https://ru-ru.facebook.com/"><img src="{% static '../static/books/images/facebook_icon.png' %}" alt="" class="footer__vk"></a>
+                                </div>
+                                
+                                <div class="footer__phone">
+                                    <a href="" class="footer__phone-link">8 800 333-33-33</a>
+                                    <p class="footer__freecall">(звонок бесплатный)</p>
+
+                                    
+                                </div>
+                                <!--<a href="" class="footer__email-link">info@digitalib.ru</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
